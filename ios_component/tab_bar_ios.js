@@ -9,6 +9,7 @@ var {
   View,
 } = ReactNative;
 
+var Home=require('./home.js')
 
 var Tab_bar_com = React.createClass({
   statics: {
@@ -20,7 +21,7 @@ var Tab_bar_com = React.createClass({
 
   getInitialState: function() {
     return {
-      selectedTab: 'redTab',
+      selectedTab: 'blueTab',
       notifCount: 0,
       presses: 0,
     };
@@ -40,6 +41,7 @@ var Tab_bar_com = React.createClass({
       <TabBarIOS
         tintColor="white"
         barTintColor="#F8F8FF">
+       
         <TabBarIOS.Item
           title="Blue Tab"
           icon={require('../home.png')}
@@ -49,8 +51,10 @@ var Tab_bar_com = React.createClass({
               selectedTab: 'blueTab',
             });
           }}>
-         {this._renderContent('#21551C', 'Green Tab', this.state.presses)}
+         <Home></Home>
         </TabBarIOS.Item>
+
+
         <TabBarIOS.Item
           systemIcon="history"
           badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
@@ -63,6 +67,8 @@ var Tab_bar_com = React.createClass({
           }}>
           {this._renderContent('#783E33', 'Red Tab', this.state.notifCount)}
         </TabBarIOS.Item>
+
+        
         <TabBarIOS.Item
           icon={require('../flux.png')}
           title="More"
