@@ -2,43 +2,100 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  */
+'use strict';
 
-import React, {
+var React = require('react-native');
+var {
   AppRegistry,
-  Component,
   StyleSheet,
   Text,
-  View
-} from 'react-native';
+  View,
+  TabBarIOS,
+  NavigatorIOS,
+} = React;
 
-var TabBarCom = require('./ios_component/tab_bar_ios.js')
-
-class lively_native extends Component {
-  render() {
+var RubyChina = React.createClass({
+  getInitialState: function() {
+      return {
+          selectedTab: 'home'
+      };
+  },
+  render: function() {
     return (
-      <TabBarCom></TabBarCom>
-      
+        <TabBarIOS selectedTab={this.state.selectedTab}>
+            <TabBarIOS.Item accessibilityLabel={"Excellent"}
+                selected={this.state.selectedTab === 'home'}
+                title="精华"
+                name="home"
+                icon={{uri: 'icon.png', isStatic: true}}
+                onPress={() => {
+                    this.setState({
+                      selectedTab: 'home'
+                    });
+                }}>
+                <NavigatorIOS style={Style.container}
+                    tintColor={'#333344'}
+                    initialRoute={{
+                      title: '社区精华',
+                      component: require('./App/Views/Home/Home')
+                    }}
+                    itemWrapperStyle={Style.navigator} />
+            </TabBarIOS.Item>
+
+            <TabBarIOS.Item accessibilityLabel={"Nodes"}
+                selected={this.state.selectedTab === 'nodes'}
+                title="节点分类"
+                name="nodes"
+                icon={{uri:'nodes.png'}}
+                onPress={() => {
+                    this.setState({
+                      selectedTab: 'nodes'
+                    });
+                }}>
+
+                <NavigatorIOS style={Style.container}
+                    tintColor={'#333344'}
+                    initialRoute={{
+                      title: '节点分类',
+                      component: require('./App/Views/Home/Nodes')
+                    }}
+                    itemWrapperStyle={Style.navigator} />
+
+            </TabBarIOS.Item>
+
+            <TabBarIOS.Item accessibilityLabel={"About"}
+                selected={this.state.selectedTab === 'about'}
+                title="关于"
+                name="about"
+                icon={{uri: 'reactnative_logo.png'}}
+                onPress={() => {
+                    this.setState({
+                      selectedTab: 'about'
+                    });
+                }}>
+
+                <NavigatorIOS style={Style.container}
+                    tintColor={'#333344'}
+                    initialRoute={{
+                      title: 'About',
+                      component: require('./App/Views/Home/About')
+                    }}
+                    itemWrapperStyle={Style.navigator} />
+
+            </TabBarIOS.Item>
+        </TabBarIOS>
     );
   }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
 });
 
-AppRegistry.registerComponent('lively_native', () => lively_native);
+var Style = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#E7EAEC'
+  },
+  navigator: {
+    backgroundColor: '#E7EAEC'
+  }
+});
+
+AppRegistry.registerComponent('RubyChina', () => RubyChina);

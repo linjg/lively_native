@@ -1,12 +1,12 @@
 {
-  "name": "lively_native",
+  "name": "RubyChina",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node_modules/react-native/packager/packager.sh"
   },
   "dependencies": {
-    "react": "^0.14.8",
-    "react-native": "^0.23.1"
+    "react-native": "^0.19.0",
+    "react-native-code-push": "^1.5.3-beta"
   }
 }
