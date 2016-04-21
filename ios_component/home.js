@@ -1,103 +1,62 @@
-'use strict';
-
-var React = require('react');
-var ReactNative = require('react-native');
-var {
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+var React=require('react-native')
+var{
+  
   StyleSheet,
-  TabBarIOS,
   Text,
-  View,
-  TextInput,
   Image,
-} = ReactNative;
+ View,
+} = React;
 
 
-var Home = React.createClass({
-  statics: {
-    title: '<TabBarIOS>',
-    description: 'Tab-based navigation.',
-  },
 
-  displayName: 'TabBarExample',
 
+
+var  Home= React.createClass({
   getInitialState: function() {
-    return {
-      selectedTab: 'redTab',
-      notifCount: 0,
-      presses: 0,
-      text: '',
-    };
+      return {
+          selectedTab: 'main'
+      };
   },
-
- 
-
-  render: function() {
+  render:function() {
     return (
-      <View style={[styles.tabContent, {backgroundColor: '#FFFFFF'}]}>
-      <View style={[styles.topView, {backgroundColor: '#FF7F00'}]}>
-         <Image
-            style={styles.icon}
-            source={require('../easyicon.png')}
-          />
-         <TextInput
-            style={[styles.textInput, {backgroundColor: '#CD0000'}]}
-            onChangeText={(text) => this.setState({text})}
-            value={this.state.text}
-            selectTextOnFocus={true}
-          />
-      </View>
-
-      <View style={[{flex:1,backgroundColor:'#fe0000',height:10}]}>
-         <Image
-            style={{flex:1,height:100,resizeMode:Image.resizeMode.contain}}
-            source={require('../e3deb8.png')}
-          />
-      </View>
-
-
-        <Text style={styles.tabText}>123</Text>
+      <View style={Style.container}>
+        <View style={Style.Image_outer}>
+           <View style={{height:20,backgroundColor:'#333333'}}></View>
+        </View>
+        <View style={Style.Image_outer}>
+          <View style={{height:20,backgroundColor:'#333333'}}></View>
+        </View>
       </View>
     );
-  },
-
-});
-
-var styles = StyleSheet.create({
-  tabContent: {
-    flex: 1,
-    alignItems: 'center',
-
-  },
-  tabText: {
-    color: 'white',
-    margin: 50,
-  },
-  topView:{
-    alignItems: 'center',
-    width: 500,
-    height: 68,
-    flexDirection:'row',
-    justifyContent:'center',
-  },
-  
-  textInput:{
-    height: 30,
-    width:280,
-    backgroundColor: '#CD0000',
-    // flex:3
-    marginTop:25,
-    marginLeft:10,
-  
-  },
-  icon:{
-    height:25,
-    width: 25,
-    marginTop:15,
-    marginLeft:0,
   }
+})
 
-
-  
+var  Style = React.StyleSheet.create({
+  container: {
+    flexDirection:'row',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
+  Image_s:{
+    
+  },
+  Image_outer:{
+     flex: 1,
+  }
 });
+
 
 module.exports = Home;

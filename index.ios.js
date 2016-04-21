@@ -1,11 +1,10 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
+ * @flow
  */
-'use strict';
-
-var React = require('react-native');
-var {
+var React=require('react-native')
+var{
   AppRegistry,
   StyleSheet,
   Text,
@@ -14,81 +13,81 @@ var {
   NavigatorIOS,
 } = React;
 
-var RubyChina = React.createClass({
+
+
+var Home =require("./ios_component/home");
+var Find =require("./ios_component/find");
+var My =require("./ios_component/my");
+
+var  lively_native= React.createClass({
   getInitialState: function() {
       return {
-          selectedTab: 'home'
+          selectedTab: 'Home'
       };
   },
-  render: function() {
+  render:function() {
     return (
-        <TabBarIOS selectedTab={this.state.selectedTab}>
-            <TabBarIOS.Item accessibilityLabel={"Excellent"}
-                selected={this.state.selectedTab === 'home'}
-                title="精华"
-                name="home"
-                icon={{uri: 'icon.png', isStatic: true}}
+       <TabBarIOS>
+           <TabBarIOS.Item 
+                selected={this.state.selectedTab === 'Home'}
+                title="主页"
+                name="Home"
+                icon={{uri: './image/flux.png', isStatic: true}}
                 onPress={() => {
                     this.setState({
-                      selectedTab: 'home'
+                      selectedTab: 'Home'
+                    });
+                }}>
+               <NavigatorIOS style={Style.container}
+                    tintColor={'#333344'}
+                    initialRoute={{
+                      title: '主页',
+                      component: Home
+                    }}
+                    itemWrapperStyle={Style.navigator} />
+            </TabBarIOS.Item>
+            <TabBarIOS.Item 
+                selected={this.state.selectedTab === 'find'}
+                title="发现"
+                name="find"
+                icon={{uri: './image/flux.png', isStatic: true}}
+                onPress={() => {
+                    this.setState({
+                      selectedTab: 'find'
                     });
                 }}>
                 <NavigatorIOS style={Style.container}
                     tintColor={'#333344'}
                     initialRoute={{
-                      title: '社区精华',
-                      component: require('./App/Views/Home/Home')
+                      title: '发现',
+                      component: Find
                     }}
                     itemWrapperStyle={Style.navigator} />
             </TabBarIOS.Item>
-
-            <TabBarIOS.Item accessibilityLabel={"Nodes"}
-                selected={this.state.selectedTab === 'nodes'}
-                title="节点分类"
-                name="nodes"
-                icon={{uri:'nodes.png'}}
+            <TabBarIOS.Item 
+                selected={this.state.selectedTab === 'my'}
+                title="我的"
+                name="my"
+                icon={{uri: './image/flux.png', isStatic: true}}
                 onPress={() => {
                     this.setState({
-                      selectedTab: 'nodes'
+                      selectedTab: 'my'
                     });
                 }}>
-
-                <NavigatorIOS style={Style.container}
+                 <NavigatorIOS style={Style.container}
                     tintColor={'#333344'}
                     initialRoute={{
-                      title: '节点分类',
-                      component: require('./App/Views/Home/Nodes')
+                      title: '我的',
+                      component: My
                     }}
                     itemWrapperStyle={Style.navigator} />
-
             </TabBarIOS.Item>
-
-            <TabBarIOS.Item accessibilityLabel={"About"}
-                selected={this.state.selectedTab === 'about'}
-                title="关于"
-                name="about"
-                icon={{uri: 'reactnative_logo.png'}}
-                onPress={() => {
-                    this.setState({
-                      selectedTab: 'about'
-                    });
-                }}>
-
-                <NavigatorIOS style={Style.container}
-                    tintColor={'#333344'}
-                    initialRoute={{
-                      title: 'About',
-                      component: require('./App/Views/Home/About')
-                    }}
-                    itemWrapperStyle={Style.navigator} />
-
-            </TabBarIOS.Item>
-        </TabBarIOS>
+       </TabBarIOS>
     );
   }
-});
+})
 
-var Style = StyleSheet.create({
+var  Style = React.StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#E7EAEC'
@@ -98,4 +97,5 @@ var Style = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('RubyChina', () => RubyChina);
+
+AppRegistry.registerComponent('lively_native', () => lively_native);
