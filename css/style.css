@@ -1,0 +1,31 @@
+row: {
+    flex-direction: 'row',
+    justify-content: 'center',
+    padding: 10,
+    background-color: '#F6F6F6',
+  },
+  separator: {
+    height: 1,
+    background-color: '#CCCCCC',
+  },
+  thumb: {
+    width: 64,
+    height: 64,
+  },
+  text: {
+    flex: 1,
+  },
+  title: {
+    
+    height:150;
+    background-color: '#FBFBFF';
+    justify-content: 'center';
+  },
+  avatar_view:{
+    background-color: '#fe0000';
+    border-radius: 10;
+    width:20;
+    heigth:20;
+  
+  },
+
